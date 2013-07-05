@@ -4,16 +4,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TaxRates {
-	/*
-		rate 	|-> Actual Rate used
-		amount 	|-> Tax amount
-	 */
 	
 	private int tax_rate_id = -1;
 	private double rate, amount;
 	
 	public TaxRates() { }
 	
+	/**
+	 * rate 	|-> Actual Rate used
+	 * amount 	|-> Tax amount
+	 */
 	public TaxRates(double rate, double amount) {
 		setRate(rate);
 		setAmount(amount);

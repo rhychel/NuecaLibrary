@@ -3,6 +3,12 @@ package net.nueca.imonggo.objects;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * 
+ * Session class that holds the login session of the logged in user.
+ * 
+ * @author rhymart
+ */
 @DatabaseTable
 public class Session {
 
@@ -51,14 +57,32 @@ public class Session {
 		return password;
 	}
 	
+	/**
+	 * 
+	 * Retrieved api_token from the server.
+	 * 
+	 * @return
+	 */
 	public String getToken(){
 		return api_token;
 	}
 	
+	/**
+	 * 
+	 * Account URL retrieved.
+	 * 
+	 * @return
+	 */
 	public String getAcctUrl(){
 		return account_url;
 	}
 	
+	/**
+	 * 
+	 * Account URL retrieved without protocol.
+	 * 
+	 * @return
+	 */
 	public String getAcctUrlNoProtocol(){
 		return account_url.replace("http://", "").replace("https://", "");
 	}
@@ -67,6 +91,12 @@ public class Session {
 		return account_id;
 	}
 	
+	/**
+	 * 
+	 * Base64 value converted from api_token.
+	 * 
+	 * @return
+	 */
 	public String getApiAuthentication() {
 		return api_authentication;
 	}

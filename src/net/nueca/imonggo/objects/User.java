@@ -6,18 +6,24 @@ import org.json.JSONObject;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * 
+ * Below are the field that can be processed.
+ * <ol>
+ * 	<li>id* - <i>Unique ID within your account</i></li>
+ * 	<li>name - <i>Unique name that identifies the User</i></li>
+ * 	<li>home_branch_id - <i>Branch id of user's home branch</i></li>
+ * 	<li>email - <i>User's email address</i></li>
+ * 	<li>role_code - <i>User's role (Possible values are: cashier, supervisor, manager, owner)</i></li>
+ * 	<li>utc_created_at* - <i>Created date and time</i></li>
+ * 	<li>utc_updated_at* - <i>Last updated date and time</i></li>
+ * 	<li>status* - <i>D if deleted, otherwise NULL</i></li>
+ * </ol>
+ * 
+ */
+
 @DatabaseTable
 public class User {
-	/*
-	 * 	id* 			|-> Unique ID within your account
-		name 			|-> Unique name that identifies the User
-		home_branch_id 	|-> Branch id of user's home branch
-		email 			|-> User's email address
-		role_code 		|-> User's role (Possible values are: cashier, supervisor, manager, owner)
-		utc_created_at* |-> Created date and time
-		utc_updated_at* |-> Last updated date and time
-		status* 		|-> D if deleted, otherwise NULL
-	 */
 	
 	@DatabaseField(id = true)
 	private int id;

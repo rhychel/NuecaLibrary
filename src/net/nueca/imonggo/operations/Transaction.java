@@ -1,9 +1,7 @@
 package net.nueca.imonggo.operations;
 
-import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
-import net.nueca.imonggo.invoice.objects.Payment;
 import net.nueca.imonggo.objects.TaxSettings;
 import net.nueca.imonggo.tools.ImonggoTools;
 import net.nueca.imonggo.tools.InvoiceLineArrayList;
@@ -18,6 +16,15 @@ import android.content.Context;
 
 public class Transaction {
 	
+	/**
+	 * 
+	 * Inventory JSON format to be sent.
+	 * 
+	 * @param context
+	 * @param totalQuantity
+	 * @param listInvoiceLines
+	 * @return
+	 */
 	public static String sendInventory(Context context, int totalQuantity, InvoiceLineArrayList listInvoiceLines) {
 		JSONObject obj = new JSONObject();
 		JSONObject invoice = new JSONObject();
@@ -42,9 +49,26 @@ public class Transaction {
 		} catch(Exception e) {
 			
 		}
-		return "NO data";
+		return "No data";
 	}
 	
+	/**
+	 * 
+	 * Invoice JSON format to be sent.
+	 * 
+	 * @param context
+	 * @param totalAmount
+	 * @param taxAmount
+	 * @param paymentTypeId
+	 * @param listPayment
+	 * @param listInvoiceLines
+	 * @param listTaxRates
+	 * @param taxes
+	 * @param invoiceURL
+	 * @param email
+	 * @param callback
+	 * @return
+	 */
 	public static String sendInvoice(Context context, double totalAmount, double taxAmount, int paymentTypeId, 
 				PaymentArrayList listPayment, InvoiceLineArrayList listInvoiceLines, TaxRatesArrayList listTaxRates, 
 				TaxSettings taxes, String invoiceURL, String email, Callable<Void> callback) {

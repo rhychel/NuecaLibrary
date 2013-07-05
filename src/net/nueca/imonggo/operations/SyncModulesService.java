@@ -122,14 +122,14 @@ public class SyncModulesService extends Service implements OnHttpRequestor, Http
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Bundle bundle = intent.getExtras();
-		server = Server.values()[bundle.getInt("server")];
-		boolean isSecured = bundle.getBoolean("is_secured");
-		shouldSyncAll = bundle.getBoolean("sync_all", true);
+		server = Server.values()[bundle.getInt(PARAMS_KEY_SERVER)];
+		boolean isSecured = bundle.getBoolean(PARAMS_KEY_ISSECURED);
+		shouldSyncAll = bundle.getBoolean(PARAMS_SYNC_ALL, true);
 		
 		if(shouldSyncAll)
 			SyncModules.getUsers(this, session, this, this, this, server, page);
 		else {
-			Modules moduleToSync = Modules.values()[bundle.getInt("module")];
+			Modules moduleToSync = Modules.values()[bundle.getInt(PARAMS_MODULE)];
 			switch(moduleToSync) {
 				case PRODUCTS: {
 					page = 1;
@@ -181,8 +181,9 @@ public class SyncModulesService extends Service implements OnHttpRequestor, Http
 	}
 
 	@Override
-	public void preExecuteOperation(Modules module) {
-		switch(module) {
+	public void preExecuteOperation(int module) {
+		Modules enumModules = Modules.values()[module];
+		switch(enumModules) {
 			case USERS: {
 				
 			} break;
@@ -193,12 +194,13 @@ public class SyncModulesService extends Service implements OnHttpRequestor, Http
 	}
 
 	@Override
-	public void postExecuteOperation(Modules module, String result,
+	public void postExecuteOperation(int module, String result,
 			boolean hasResponse) {
 		if(hasResponse) {
 			RequestResult reqResult = new RequestResult(result);
 			try {
-				switch(module) {
+				Modules enumModules = Modules.values()[module];
+				switch(enumModules) {
 					case USERS: {
 						List<User> users = null;
 						try {

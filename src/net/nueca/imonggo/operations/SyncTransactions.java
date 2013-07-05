@@ -6,7 +6,7 @@ import android.os.IBinder;
 
 public class SyncTransactions extends Service {
 	
-	// Sywable Technique
+	// TODO Sywable Technique
 	
 	@Override
 	public IBinder onBind(Intent intent) {

@@ -2,6 +2,7 @@ package net.nueca.http;
 
 import net.nueca.exceptions.RequestException;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

@@ -1,6 +1,5 @@
 package net.nueca.imonggo.operations;
 
-import net.nueca.http.HttpRequestProperties;
 import net.nueca.http.HttpRequestor;
 import net.nueca.http.HttpsRequestProperties;
 import net.nueca.http.JSONRequestor;
@@ -15,12 +14,28 @@ import net.nueca.tools.EmailValidator;
 import android.content.Context;
 import android.util.Log;
 
+/**
+ * 
+ * Class that controls the login sequence on Imonggo/iretail cloud.
+ * 
+ * @author rhymart
+ *
+ */
 public class Login {
 	
 	private String account_id = "", email = "", password = "";
 	
 	public Login() { }
 	
+	/**
+	 * 
+	 * Pass the login fields.
+	 * 
+	 * @param accountId
+	 * @param email
+	 * @param password
+	 * @throws LoginException when account id, email or password is not supplied and email is not valid.
+	 */
 	public Login(String accountId, String email, String password) throws LoginException {
 		setAccount_id(accountId);
 		setEmail(email);
@@ -71,36 +86,54 @@ public class Login {
 			throw new LoginException("Password is not supplied.");
 	}
 
+	/**
+	 * 
+	 * Requester to retrieve user's account URL.
+	 * 
+	 * @param context
+	 * @param onHttpReq
+	 * @param httpReqProp
+	 * @param server
+	 */
 	public void requestForAccountUrl(Context context, OnHttpRequestor onHttpReq, HttpsRequestProperties httpReqProp, Server server) {
 		switch(server) {
 			case IMONGGO:{
 				HttpRequestor httpReq = new HttpRequestor(context, ImonggoTools.buildAPIUrlImonggo(context, getAccount_id()), RequestMethod.GET);
-				Log.e("URL", httpReq.getRequestUrl());
-				httpReq.setModule(Modules.ACCOUNT_URL);
+				httpReq.setModule(Modules.ACCOUNT_URL.ordinal());
 				httpReq.setOnHttpRequestor(onHttpReq);
 				httpReq.execute();
 			} break;
 			case IRETAILCLOUD: {
 				HttpRequestor httpReq = new HttpRequestor(context, ImonggoTools.buildAPIUrlIRetailCloud(context, getAccount_id()), RequestMethod.GET);
-				httpReq.setModule(Modules.ACCOUNT_URL);
+				httpReq.setModule(Modules.ACCOUNT_URL.ordinal());
 				httpReq.setOnHttpRequestor(onHttpReq);
 				httpReq.execute();
 			} break;
 		}
 	}
 	
+	/**
+	 * 
+	 * Requester to get api_token for the user.
+	 * 
+	 * @param context
+	 * @param session
+	 * @param onHttpReq
+	 * @param httpReqProp
+	 * @param server
+	 */
 	public void requestForApiToken(Context context, Session session, OnHttpRequestor onHttpReq, HttpsRequestProperties httpReqProp, Server server) {
 		switch(server) {
 			case IMONGGO: {
 				JSONRequestor jsonReq = new JSONRequestor(context, ImonggoTools.buildAPITokenUrl(context, session.getAcctUrl(), Modules.TOKENS, getEmail(), getPassword()), true, RequestMethod.GET);
 				jsonReq.setOnHttpRequestor(onHttpReq);
-				jsonReq.setModule(Modules.TOKENS);
+				jsonReq.setModule(Modules.TOKENS.ordinal());
 				jsonReq.execute();
 			} break;
 			case IRETAILCLOUD: {
 				JSONRequestor jsonReq = new JSONRequestor(context, ImonggoTools.buildAPITokenUrl(context, session.getAcctUrl(), Modules.TOKENS, getEmail(), getPassword()), RequestMethod.GET);
 				jsonReq.setOnHttpRequestor(onHttpReq);
-				jsonReq.setModule(Modules.TOKENS);
+				jsonReq.setModule(Modules.TOKENS.ordinal());
 				jsonReq.execute();
 			} break;
 		}

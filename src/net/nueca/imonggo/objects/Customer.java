@@ -4,48 +4,51 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * Below are the field that can be processed.
+ * <ol>
+ * 	<li>id* - <i>Unique ID</i></li>
+ * 	<li>code* - <i>Unique customer code, system assigned based on format</i></li>
+ * 	<li>alternate_code - <i>User assign alternate customer code</i></li>
+ * 	<li>first_name - <i>First name</i></li>
+ * 	<li>last_name - <i>Last name</i></li>
+ * 	<li>name - <i>Full name, concatenation of first and last name (max 100)</i></li>
+ * 	<li>company_name - <i>Company name</i></li>
+ * 	<li>tin - <i>Tax Identification Number</i></li>
+ * 	<li>tax_exempt - <i>Tax exempt flag (default is false), set to true if customer is tax exempt</i></li>
+ * 	<li>street - <i>Street</i></li>
+ * 	<li>city - <i>City</i></li>
+ * 	<li>state - <i>State (Two Letter State code, only applicable for USA)</i></li>
+ * 	<li>zipcode - <i>Zip code</i></li>
+ * 	<li>country - <i>Country Code (Two letter country code. Refer to this table for complete list)</i></li>
+ * 	<li>telephone - <i>Telephone number</i></li>
+ * 	<li>fax - <i>Fax number</i></li>
+ * 	<li>mobile - <i>Mobile number</i></li>
+ * 	<li>email - <i>Email address</i></li>
+ * 	<li>remark - <i>Remark</i></li>
+ * 	<li>customer_type_id* - <i>Customer Membership type id</i></li>
+ * 	<li>customer_type_name* - <i>Customer Membership Type name</i></li>
+ * 	<li>discount_text* - <i>Discount in percent based on membership type (e.g. "5%")</i></li>
+ * 	<li>available_points* - <i>Reward points available</i></li>
+ * 	<li>birthdate - <i>Birthday in YYYY-MM-DD format</i></li>
+ * 	<li>status* - <i>D if deleted, otherwise NULL</i></li>
+ * 	<li>point_to_amount_ratio - <i>point_to_amount_ratio</i></li>
+ * 	<li>utc_created_at - <i>utc_created_at</i></li>
+ * 	<li>utc_updated_at - <i>utc_updated_at</i></li>
+ * 	<li>birthday - <i>birthday</i></li>
+ * </ol>
+ * 
+ */
+@DatabaseTable
 public class Customer {
-	/**
-	 * "point_to_amount_ratio": 1,
-	 * "utc_created_at": "2013/06/05 05:49:56 +0000", 
-	 * "utc_updated_at": "2013/06/05 05:49:56 +0000", 
-	 * "birthday": "2013/06/05 00:00:00 +0800", 
-	 * 
-	 * 
-	 * 	id* 					|-> Unique ID
-		code* 					|-> Unique customer code, system assigned based on format
-		alternate_code 			|-> User assign alternate customer code
-		first_name 				|-> First name
-		last_name 				|-> Last name
-		name 					|-> Full name, concatenation of first and last name (max 100)
-		company_name 			|-> Company name
-		tin 					|-> Tax Identification Number
-		tax_exempt 				|-> Tax exempt flag (default is false), set to true if customer is tax exempt
-		street	 				|-> Street
-		city 					|-> City
-		state 					|-> State (Two Letter State code, only applicable for USA)
-		zipcode 				|-> Zip code
-		country 				|-> Country Code (Two letter country code. Refer to this table for complete list)
-		telephone 				|-> Telephone number
-		fax 					|-> Fax number
-		mobile 					|-> Mobile number
-		email 					|-> Email address
-		remark 					|-> Remark
-		customer_type_id* 		|-> Customer Membership type id
-		customer_type_name* 	|-> Customer Membership Type name
-		discount_text* 			|-> Discount in percent based on membership type (e.g. "5%")
-		available_points* 		|-> Reward points available
-		birthdate 				|-> Birthday in YYYY-MM-DD format
-		status* 				|-> D if deleted, otherwise NULL
-	 */
 	
 	@DatabaseField
 	private int id, point_to_amount_ratio;
-	@DatabaseField
 	private String code, alternate_code, first_name, last_name, name, company_name, tin, street, city, state, 
 			zipcode, country, telephone, fax, mobile, email, remark, customer_type_id, customer_type_name, discount_text, 
-			available_points, birthdate, status;
+			available_points, birthdate, status, utc_created_at, utc_updated_at, birthday;
 	@DatabaseField
 	private boolean tax_exempt;
 	
@@ -83,6 +86,9 @@ public class Customer {
 			setAvailable_points(jsonObj.getString("available_points"));
 			setBirthdate(jsonObj.getString("birthdate"));
 			setStatus(jsonObj.getString("status"));
+			setUtc_created_at(jsonObj.getString("utc_created_at"));
+			setUtc_updated_at(jsonObj.getString("utc_updated_at"));
+			setBirthday(jsonObj.getString("birthday"));
 			
 			setTax_exempt(jsonObj.getBoolean("tax_exempt"));
 			
@@ -297,6 +303,30 @@ public class Customer {
 
 	public void setPoint_to_amount_ratio(int point_to_amount_ratio) {
 		this.point_to_amount_ratio = point_to_amount_ratio;
+	}
+
+	public String getUtc_created_at() {
+		return utc_created_at;
+	}
+
+	public void setUtc_created_at(String utc_created_at) {
+		this.utc_created_at = utc_created_at;
+	}
+
+	public String getUtc_updated_at() {
+		return utc_updated_at;
+	}
+
+	public void setUtc_updated_at(String utc_updated_at) {
+		this.utc_updated_at = utc_updated_at;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 	
 	

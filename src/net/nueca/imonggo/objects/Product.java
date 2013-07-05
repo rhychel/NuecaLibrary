@@ -10,31 +10,32 @@ import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * 	Below are the field that can be processed.
+ * <ol>
+ * 	<li>id* - <i>System generated ID that uniquely identifies this product</i></li>
+ * 	<li>stock_no - <i>Manually assigned code that uniquely identifies this product (may contain letters, space, dash and underscore)</i></li>
+ * 	<li>name - <i>product name, duplicate name is not allowed</i></li>
+ * 	<li>cost - <i>cost, only zero or positive value is allowed; should have more than 2 decimal places</i></li>
+ * 	<li>retail_price - <i>retail price, only zero or positive value is allowed; should not have more than 2 decimal places</i></li>
+ * 	<li>description - <i>description</i></li>
+ * 	<li>allow_decimal_quantities - <i>Sets this flag to true if decimal value is allowed in quantity (default to false)</i></li>
+ * 	<li>disable_discount - <i>Sets this flag to true if retail price cannot be discounted at the store (default to false)</i></li>
+ * 	<li>disable_inventory - <i>Sets this flag to true if product does not require inventory tracking (e.g. service), (default to false)</i></li>
+ * 	<li>enable_open_price - <i>Sets this flag to true if cashier is allowed to change retail price (default to false)</i></li>
+ * 	<li>tax_exempt - <i>Sets this flag to true if tax should not be computed for this item (default to false)</i></li>
+ * 	<li>tag_list - <i>list of tags separated with comma</i></li>
+ * 	<li>barcode_list - <i>list of barcodes separated with comma</i></li>
+ * 	<li>thumbnail_url* - <i>image url</i></li>
+ * 	<li>branch_prices* - <i>array containing branch prices</i></li>
+ * 	<li>tax_rates* - <i>(read-only) an array containing tax rates</i></li>
+ * 	<li>status* - <i>Possible values are NULL and 'D' (NULL = Active, 'D' = Deleted)</i></li>
+ * 	<li>utc_created_at - <i>utc_created_at</i></li>
+ * 	<li>utc_updated_at - <i>utc_updated_at</i></li>
+ * </ol>
+ */
 @DatabaseTable
 public class Product {
-	
-	/**
-	 * 	id* 						|-> System generated ID that uniquely identifies this product
-		stock_no 					|-> Manually assigned code that uniquely identifies this product (may contain letters, space, dash and underscore)
-		name 						|-> product name, duplicate name is not allowed
-		cost 						|-> cost, only zero or positive value is allowed; should have more than 2 decimal palces
-		retail_price				|-> retail price, only zero or positive value is allowed; should not have more than 2 decimal places
-		description 				|-> description
-		allow_decimal_quantities 	|-> Sets this flag to true if decimal value is allowed in quantity (default to false)
-		disable_discount 			|-> Sets this flag to true if retail price cannot be discounted at the store (default to false)
-		disable_inventory 			|-> Sets this flag to true if product does not require inventory tracking (e.g. service), (default to false)
-		enable_open_price 			|-> Sets this flag to true if cashier is allowed to change retail price (default to false)
-		tax_exempt 					|-> Sets this flag to true if tax should not be computed for this item (default to false)
-		tag_list 					|-> list of tags separated with comma
-		barcode_list 				|-> list of barcodes separated with comma
-		thumbnail_url* 				|-> image url
-		branch_prices* 				|-> array containing branch prices
-		tax_rates* 					|-> (read-only) an array containing tax rates
-		status* 					|-> Possible values are NULL and 'D' (NULL = Active, 'D' = Deleted)
-		
-		"utc_created_at": "2013/05/20 05:47:05 +0000", 
-		"utc_updated_at": "2013/05/20 06:04:50 +0000", 
-	 */
 	
 	@DatabaseField(id = true)
 	private int id;

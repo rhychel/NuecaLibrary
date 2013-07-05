@@ -2,14 +2,21 @@ package net.nueca.imonggo.tools;
 
 import java.util.EnumMap;
 
+import android.app.Activity;
+import android.graphics.Typeface;
+
 import net.nueca.imonggo.enums.Modules;
 import net.nueca.imonggo.enums.SettingsName;
-import net.nueca.imonggo.objects.Session;
 
 public class Configurations {
-	public static Session session = new Session();
 	public static String API_AUTHENTICATION = "";
+	private static Typeface font;
 	
+	/**
+	 * 
+	 * EnumMap for API Modules in JSON.
+	 * 
+	 */
 	public static EnumMap<Modules, String> API_MODULES = new EnumMap<Modules, String>(Modules.class){
 
 		private static final long serialVersionUID = 9136022492409598128L;
@@ -26,6 +33,11 @@ public class Configurations {
 		}
 	};
 	
+	/**
+	 * 
+	 * EnumMap for Settings' name.
+	 * 
+	 */
 	public static EnumMap<SettingsName, String> SETTINGS_NAME = new EnumMap<SettingsName, String>(SettingsName.class){
 		
 		private static final long serialVersionUID = 3897571923503134179L;
@@ -84,5 +96,13 @@ public class Configurations {
 			put(SettingsName.MASTER_ACCOUNT_ID, "master_account_id");
 		}
 	};
+	
+	public static void setFont(Activity activity, String tffName) {
+		font = Typeface.createFromAsset(activity.getAssets(), "fonts/"+tffName+".ttf");
+	}
+	
+	public static Typeface getFont() {
+		return font;
+	}
 	
 }

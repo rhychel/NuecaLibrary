@@ -6,18 +6,19 @@ import org.json.JSONObject;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ * {
+ * 		"branch_id": 85, 
+ * 		"utc_created_at": "2013/05/20 05:59:05 +0000", 
+ * 		"stock_no": "25", 
+ * 		"quantity": 2000.0, 
+ * 		"product_id": 2924, 
+ * 		"utc_updated_at": "2013/05/20 05:59:05 +0000"
+ * }
+ */
 @DatabaseTable
 public class Inventory {
-	/*
-	 * {
-	 * 		"branch_id": 85, 
-	 * 		"utc_created_at": "2013/05/20 05:59:05 +0000", 
-	 * 		"stock_no": "25", 
-	 * 		"quantity": 2000.0, 
-	 * 		"product_id": 2924, 
-	 * 		"utc_updated_at": "2013/05/20 05:59:05 +0000"
-	 * }
-	 */
+	
 	@DatabaseField(id = true)
 	private int product_id;
 	@DatabaseField

@@ -36,7 +36,7 @@ public class HttpRequestor extends AsyncTask<Void, String, String> {
 	private HttpsRequestProperties hsrp = null;
 	private HttpRequestProperties hrp = null;
 	private OnHttpRequestor ohr;
-	private Modules module;
+	private int module;
 	
 	private boolean success = false;
 	private boolean isSecured = false;
@@ -68,7 +68,7 @@ public class HttpRequestor extends AsyncTask<Void, String, String> {
 		setRequestUrl(url);
 	}
 	
-	public HttpRequestor(Context context, String url, boolean isSecured, RequestMethod requestMethod, Modules module) {
+	public HttpRequestor(Context context, String url, boolean isSecured, RequestMethod requestMethod, int module) {
 		setContext(context);
 		setRequestMethod(requestMethod);
 		setIsSecured(isSecured);
@@ -136,11 +136,11 @@ public class HttpRequestor extends AsyncTask<Void, String, String> {
 		this.parameters = parameters;
 	}
 
-	public Modules getModule() {
+	public int getModule() {
 		return module;
 	}
 
-	public void setModule(Modules module) {
+	public void setModule(int module) {
 		this.module = module;
 	}
 

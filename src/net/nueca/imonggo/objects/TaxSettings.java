@@ -14,14 +14,15 @@ public class TaxSettings {
 	/*
 	 * Case 1: {"compute_tax": false}
 	 * 
-* 	{
-* 		"compute_tax": true, 
-* 		"tax_inclusive": true, 
- * 		"tax_rates": [
- * 			{"status": null, "name": "philippine tax", "branch_id": null, "id": 753, "value": 0.12, "tax_rate_type": 1}, 
- * 			{"status": null, "name": "sin tax", "branch_id": null, "id": 754, "value": 0.01, "tax_rate_type": 1}
- * 		]
- * 	}
+	 * Case 2:
+	 *  {
+	 * 		"compute_tax": true, 
+	 * 		"tax_inclusive": true, 
+	 * 		"tax_rates": [
+	 * 			{"status": null, "name": "philippine tax", "branch_id": null, "id": 753, "value": 0.12, "tax_rate_type": 1}, 
+	 * 			{"status": null, "name": "sin tax", "branch_id": null, "id": 754, "value": 0.01, "tax_rate_type": 1}
+	 * 		]
+	 * 	}
 	 */
 	
 	private boolean compute_tax, tax_inclusive;

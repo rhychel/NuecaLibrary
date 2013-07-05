@@ -41,7 +41,7 @@ public class JSONRequestor extends AsyncTask<Void, String, String> {
 	private OnHttpRequestor ojo = null;
 	private HttpsRequestProperties hsrp = null;
 	private HttpRequestProperties hrp = null;
-	private Modules module;
+	private int module;
 	
 	private Context context;
 	private String requestURL;
@@ -148,11 +148,11 @@ public class JSONRequestor extends AsyncTask<Void, String, String> {
 		this.hrp = irp;
 	}
 
-	public Modules getModule() {
+	public int getModule() {
 		return module;
 	}
 
-	public void setModule(Modules module) {
+	public void setModule(int module) {
 		this.module = module;
 	}
 

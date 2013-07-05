@@ -4,18 +4,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class InvoiceLine {
-	/*
-	 * 	product_id+ 		|-> product ID
-		discount_text++ 	|-> discount either in percent or in value (e.g. 10%, 5)
-		quantity++ 			|-> quantity (default is 1)
-		remark++ 			|-> remark or notes
-	 */
+	
 	private int product_id, quantity;
 	private String discount_text, remark;
 	private double retail_price;
 	
 	public InvoiceLine() { }
 	
+	/**
+	 * product_id+ 			|-> product ID
+	 * discount_text++ 		|-> discount either in percent or in value (e.g. 10%, 5)
+	 * quantity++ 			|-> quantity (default is 1)
+	 * remark++ 			|-> remark or notes
+	 */
 	public InvoiceLine(int product_id, int quantity, String discount_text, String remark, double retail_price) {
 		setProduct_id(product_id);
 		setQuantity(quantity);

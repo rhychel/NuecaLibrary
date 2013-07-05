@@ -17,11 +17,11 @@ public class Invoice {
 	}
 	
 	public void sendInvoiceToIRetailcloud() {
-		
+		// TODO
 	}
 	
 	public void sendInvoiceToImonggo() {
-		
+		// TODO
 	}
 	
 }
